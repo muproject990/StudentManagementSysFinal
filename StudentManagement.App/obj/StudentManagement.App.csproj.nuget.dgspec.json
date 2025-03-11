@@ -1,0 +1,225 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/avs/FinalProjAsp.net/StudentManagement.App/StudentManagement.App.csproj": {}
+  },
+  "projects": {
+    "/home/avs/FinalProjAsp.net/StudentManagement.App/StudentManagement.App.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/avs/FinalProjAsp.net/StudentManagement.App/StudentManagement.App.csproj",
+        "projectName": "StudentManagement.App",
+        "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.App/StudentManagement.App.csproj",
+        "packagesPath": "/home/avs/.nuget/packages/",
+        "outputPath": "/home/avs/FinalProjAsp.net/StudentManagement.App/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/avs/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/lib64/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj": {
+                "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj"
+              },
+              "/home/avs/FinalProjAsp.net/StudentManagement.Infra/StudentManagement.Infra.csproj": {
+                "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.Infra/StudentManagement.Infra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[1.1.0.118, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj",
+        "projectName": "StudentManagement.Domain",
+        "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj",
+        "packagesPath": "/home/avs/.nuget/packages/",
+        "outputPath": "/home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/avs/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/lib64/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/avs/FinalProjAsp.net/StudentManagement.Infra/StudentManagement.Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/avs/FinalProjAsp.net/StudentManagement.Infra/StudentManagement.Infra.csproj",
+        "projectName": "StudentManagement.Infra",
+        "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.Infra/StudentManagement.Infra.csproj",
+        "packagesPath": "/home/avs/.nuget/packages/",
+        "outputPath": "/home/avs/FinalProjAsp.net/StudentManagement.Infra/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/avs/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "/usr/lib64/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj": {
+                "projectPath": "/home/avs/FinalProjAsp.net/StudentManagement.Domain/StudentManagement.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/9.0.103/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
