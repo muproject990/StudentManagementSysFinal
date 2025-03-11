@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentManagement.App.Automapper;
 using StudentManagementSystem.Application.Handlers;
 using StudentManagement.Infra.Persistence;
+using StudentManagement.Infra.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Register generic repository and service for all entities.
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+
+
 // builder.Services.AddScoped<GetTopThreeStudentsHandler>();
 
 // Register Mapper
@@ -86,6 +89,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+// 5. Registering the background services
+builder.Services.AddHostedService<DatabaseSynchronizationService>();
+
+
+
 var app = builder.Build();
 
 
@@ -101,7 +110,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 
-// 5. Configure Middleware
+
+// 6. Configure Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

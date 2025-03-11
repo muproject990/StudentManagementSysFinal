@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StudentManagement.Infra.services;
 using StudentManagementSystem.Infrastructure.Persistence;
 
 namespace StudentManagement.Infra
@@ -18,6 +19,7 @@ namespace StudentManagement.Infra
             services.AddDbContext<StudentDbContext2>(options =>
             options.UseSqlite(connectionString2));
 
+            services.AddScoped<DatabaseSynchronizationService>();
 
             return services;
         }

@@ -9,13 +9,12 @@ using Microsoft.Extensions.Logging;
 using StudentManagement.Domain.Entities;
 using StudentManagementSystem.Infrastructure.Persistence;
 
-namespace StudentManagement.App.services
+namespace StudentManagement.Infra.services
 {
     public class DatabaseSynchronizationService : BackgroundService
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<DatabaseSynchronizationService> _logger;
-        private readonly TimeSpan _syncInterval = TimeSpan.FromMinutes(60);
 
         public DatabaseSynchronizationService(IServiceProvider serviceProvider, ILogger<DatabaseSynchronizationService> logger)
         {
@@ -51,62 +50,126 @@ namespace StudentManagement.App.services
                 }
 
                 // Wait for the defined interval before next sync.
-                await Task.Delay(_syncInterval, stoppingToken);
+                await Task.Delay(TimeSpan.FromMinutes(60), stoppingToken);
             }
         }
 
-        /// <summary>
-        /// Synchronizes the Students table from source context to destination context.
-        /// Assumes that each Student record has a unique StudentID and uses LastModified
-        /// to determine newer modifications.
-        /// </summary>
+        // New method to allow manual sync triggering
+        public async Task RunSyncAsync()
+        {
+            try
+            {
+                _logger.LogInformation("Manual synchronization started.");
+
+                using (var scope = _serviceProvider.CreateScope())
+                {
+                    var db1 = scope.ServiceProvider.GetRequiredService<StudentDbContext1>();
+                    var db2 = scope.ServiceProvider.GetRequiredService<StudentDbContext2>();
+
+                    // Synchronize Students from db1 to db2
+                    await SynchronizeStudents(db1, db2);
+                    // And synchronize Students from db2 to db1 for bidirectionality.
+                    await SynchronizeStudents(db2, db1);
+                }
+
+                _logger.LogInformation("Manual synchronization complete.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error during manual synchronization.");
+            }
+        }
+
         private async Task SynchronizeStudents(DbContext sourceContext, DbContext destinationContext)
         {
-            // Load students from source and destination.
-            var sourceStudents = await sourceContext.Set<Student>().AsNoTracking().ToListAsync();
-            var destinationStudents = await destinationContext.Set<Student>().AsNoTracking().ToListAsync();
+            // Step 1: Retrieve students from source and destination
+            var sourceStudents = await ReadStudents(sourceContext);
+            var destinationStudents = await ReadStudents(destinationContext);
 
-            // For each student in the source, check if it exists in the destination.
+            // Step 2: Insert or update students in destination based on source data
             foreach (var sourceStudent in sourceStudents)
             {
                 var destStudent = destinationStudents.FirstOrDefault(s => s.StudentID == sourceStudent.StudentID);
+
                 if (destStudent == null)
                 {
-                    // Insert new record
-                    destinationContext.Set<Student>().Add(new Student
-                    {
-                        StudentID = sourceStudent.StudentID,
-                        FullName = sourceStudent.FullName,
-                        DateOfBirth = sourceStudent.DateOfBirth,
-                        Email = sourceStudent.Email,
-                        PhoneNumber = sourceStudent.PhoneNumber,
-                        RegistrationDate = sourceStudent.RegistrationDate,
-                        // Assuming LastModified is implemented:
-                        LastModified = sourceStudent.LastModified
-                    });
+                    // Create: Insert new student if it does not exist in destination
+                    await CreateStudent(destinationContext, sourceStudent);
                 }
                 else
                 {
-                    // Update record if source is newer.
-                    // For this example, we assume that a higher LastModified means newer.
+                    // Update: Update the student if source data is newer
                     if (sourceStudent.LastModified > destStudent.LastModified)
                     {
-                        // Attach entity if not tracked and update fields.
-                        destinationContext.Entry(destStudent).State = EntityState.Detached;
-                        destinationContext.Set<Student>().Update(new Student
-                        {
-                            StudentID = sourceStudent.StudentID,
-                            FullName = sourceStudent.FullName,
-                            DateOfBirth = sourceStudent.DateOfBirth,
-                            Email = sourceStudent.Email,
-                            PhoneNumber = sourceStudent.PhoneNumber,
-                            RegistrationDate = sourceStudent.RegistrationDate,
-                            LastModified = sourceStudent.LastModified
-                        });
+                        await UpdateStudent(destinationContext, sourceStudent);
                     }
                 }
             }
+
+            // Step 3: Delete students from destination that no longer exist in source
+            var studentsToDelete = destinationStudents
+                .Where(destStudent => !sourceStudents.Any(srcStudent => srcStudent.StudentID == destStudent.StudentID))
+                .ToList();
+
+            foreach (var studentToDelete in studentsToDelete)
+            {
+                await DeleteStudent(destinationContext, studentToDelete);
+            }
+
+            // Step 4: Save changes to the destination database (insert, update, delete)
             await destinationContext.SaveChangesAsync();
         }
+
+        // Read students from a context
+        private async Task<List<Student>> ReadStudents(DbContext context)
+        {
+            return await context.Set<Student>().AsNoTracking().ToListAsync();
+        }
+
+        // Create a student in the destination database
+        private async Task CreateStudent(DbContext destinationContext, Student student)
+        {
+            destinationContext.Set<Student>().Add(new Student
+            {
+                StudentID = student.StudentID,
+                FullName = student.FullName,
+                DateOfBirth = student.DateOfBirth,
+                Email = student.Email,
+                PhoneNumber = student.PhoneNumber,
+                RegistrationDate = student.RegistrationDate,
+                LastModified = student.LastModified
+            });
+        }
+
+        // Update an existing student in the destination database
+        private async Task UpdateStudent(DbContext destinationContext, Student student)
+        {
+            // Detach the entity if it is being tracked, then update it
+            var existingStudent = await destinationContext.Set<Student>().FindAsync(student.StudentID);
+            if (existingStudent != null)
+            {
+                destinationContext.Entry(existingStudent).State = EntityState.Detached;
+            }
+
+            destinationContext.Set<Student>().Update(new Student
+            {
+                StudentID = student.StudentID,
+                FullName = student.FullName,
+                DateOfBirth = student.DateOfBirth,
+                Email = student.Email,
+                PhoneNumber = student.PhoneNumber,
+                RegistrationDate = student.RegistrationDate,
+                LastModified = student.LastModified
+            });
+        }
+
+        // Delete a student from the destination database
+        private async Task DeleteStudent(DbContext destinationContext, Student student)
+        {
+            destinationContext.Set<Student>().Remove(student);
+        }
+
     }
+
+
 }

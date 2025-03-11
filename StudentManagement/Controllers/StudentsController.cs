@@ -15,12 +15,15 @@ namespace StudentManagement.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StudentsController(IGenericService<Student> studentService, IMapper mapper, GetTopThreeStudentsHandler getTopThreeStudentsHandler) : ControllerBase
+    public class StudentsController(IGenericService<Student> studentService, IMapper mapper
+    // , GetTopThreeStudentsHandler getTopThreeStudentsHandler
+    )
+     : ControllerBase
     {
         private readonly IGenericService<Student> _studentService = studentService;
         private readonly IMapper _mapper = mapper;
 
-        private readonly GetTopThreeStudentsHandler _getTopThreeStudentsHandler = getTopThreeStudentsHandler;
+        // private readonly GetTopThreeStudentsHandler _getTopThreeStudentsHandler = getTopThreeStudentsHandler;
 
         // GET: api/Students
         // Returns all students (optionally,  can create a StudentDto to control what data is exposed)
