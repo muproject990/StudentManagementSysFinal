@@ -9,9 +9,9 @@ using StudentManagementSystem.Infrastructure.Persistence;
 
 namespace StudentManagement.Infra.Persistence
 {
-    public static class DataSeeder
+    public static class DataSeeder2
     {
-        public static void Seed(StudentDbContext context)
+        public static void Seed(StudentDbContext2 context)
         {
             // Seed Courses first, so that they can be referenced
             if (!context.Courses.Any())

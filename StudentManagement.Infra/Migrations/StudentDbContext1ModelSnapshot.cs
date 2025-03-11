@@ -9,8 +9,8 @@ using StudentManagementSystem.Infrastructure.Persistence;
 
 namespace StudentManagement.Infra.Migrations
 {
-    [DbContext(typeof(StudentDbContext))]
-    partial class StudentDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(StudentDbContext1))]
+    partial class StudentDbContext1ModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -110,6 +110,9 @@ namespace StudentManagement.Infra.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")

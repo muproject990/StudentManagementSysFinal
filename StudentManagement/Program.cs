@@ -22,7 +22,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Register generic repository and service for all entities.
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
-builder.Services.AddScoped<GetTopThreeStudentsHandler>();
+// builder.Services.AddScoped<GetTopThreeStudentsHandler>();
 
 // Register Mapper
 builder.Services.AddAutoMapper(typeof(Program));
@@ -88,13 +88,18 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// 4. Migrate and Seed Database
+
+// 4
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<StudentDbContext>();
-    dbContext.Database.Migrate();
-    DataSeeder.Seed(dbContext);
+    var db1 = scope.ServiceProvider.GetRequiredService<StudentDbContext1>();
+    var db2 = scope.ServiceProvider.GetRequiredService<StudentDbContext2>();
+
+    // Migrate both DbContexts
+    db1.Database.Migrate();
+    db2.Database.Migrate();
 }
+
 
 // 5. Configure Middleware
 if (app.Environment.IsDevelopment())

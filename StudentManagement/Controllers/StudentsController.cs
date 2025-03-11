@@ -42,18 +42,18 @@ namespace StudentManagement.Controllers
         }
 
 
-        [HttpGet("TopThree")]
-        public async Task<IActionResult> GetTopThreeStudent()
-        {
-            var query = new GetTopThreeStudentsQuery();
-            var res = await _getTopThreeStudentsHandler.HandleAsync(query);
-            if (res.IsSuccess)
-            {
-                return Ok(res.Data);
-            }
-            return BadRequest(new { Error = res.ErrorMessage });
+        // [HttpGet("TopThree")]
+        // public async Task<IActionResult> GetTopThreeStudent()
+        // {
+        //     var query = new GetTopThreeStudentsQuery();
+        //     var res = await _getTopThreeStudentsHandler.HandleAsync(query);
+        //     if (res.IsSuccess)
+        //     {
+        //         return Ok(res.Data);
+        //     }
+        //     return BadRequest(new { Error = res.ErrorMessage });
 
-        }
+        // }
 
         // GET: api/Students/{id}
         // Returns a single student by its ID.

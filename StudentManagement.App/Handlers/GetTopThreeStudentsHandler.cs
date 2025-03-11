@@ -10,9 +10,9 @@ using StudentManagement.App.Queries;
 
 namespace StudentManagementSystem.Application.Handlers
 {
-    public class GetTopThreeStudentsHandler(StudentDbContext context)
+    public class GetTopThreeStudentsHandler(StudentDbContext1 context)
     {
-        private readonly StudentDbContext _context = context;
+        private readonly StudentDbContext1 _context = context;
 
         public async Task<ServiceResult<IEnumerable<Student>>> HandleAsync(GetTopThreeStudentsQuery query)
         {

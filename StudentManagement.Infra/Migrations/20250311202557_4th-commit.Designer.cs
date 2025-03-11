@@ -10,9 +10,9 @@ using StudentManagementSystem.Infrastructure.Persistence;
 
 namespace StudentManagement.Infra.Migrations
 {
-    [DbContext(typeof(StudentDbContext))]
-    [Migration("20250311190532_5th-commit")]
-    partial class _5thcommit
+    [DbContext(typeof(StudentDbContext1))]
+    [Migration("20250311202557_4th-commit")]
+    partial class _4thcommit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -113,6 +113,9 @@ namespace StudentManagement.Infra.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastModified")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")

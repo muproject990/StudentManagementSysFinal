@@ -3,12 +3,9 @@ using StudentManagement.Domain.Entities;
 
 namespace StudentManagementSystem.Infrastructure.Persistence
 {
-    public class StudentDbContext : DbContext
+    public class StudentDbContext1 : DbContext
     {
-        public StudentDbContext(DbContextOptions options)
-            : base(options)
-        {
-        }
+        public StudentDbContext1(DbContextOptions<StudentDbContext1> options) : base(options) { }
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }

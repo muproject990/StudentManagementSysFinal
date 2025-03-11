@@ -28,9 +28,9 @@
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.AssemblyInfoInputs.cache
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.AssemblyInfo.cs
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.csproj.CoreCompileInputs.cache
+/home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.sourcelink.json
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentM.4FDA40BD.Up2Date
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.dll
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/refint/StudentManagement.App.dll
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.pdb
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/ref/StudentManagement.App.dll
-/home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.sourcelink.json

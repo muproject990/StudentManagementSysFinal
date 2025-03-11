@@ -8,10 +8,10 @@ namespace StudentManagement.Infra.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly StudentDbContext _context;
+        private readonly StudentDbContext1 _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(StudentDbContext context)
+        public GenericRepository(StudentDbContext1 context)
         {
             _context = context;
             _dbSet = context.Set<T>();  // automatically sets the appropriate DbSet<T>

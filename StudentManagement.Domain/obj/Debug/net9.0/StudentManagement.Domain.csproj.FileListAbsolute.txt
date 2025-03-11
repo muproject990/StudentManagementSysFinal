@@ -17,8 +17,8 @@
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.AssemblyInfoInputs.cache
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.AssemblyInfo.cs
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.csproj.CoreCompileInputs.cache
+/home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.sourcelink.json
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.dll
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/refint/StudentManagement.Domain.dll
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.pdb
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/ref/StudentManagement.Domain.dll
-/home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.sourcelink.json

@@ -12,6 +12,9 @@ namespace StudentManagement.Domain.Entities
         public string Email { get; set; }  // Must be unique
         public string PhoneNumber { get; set; }
         public DateTime RegistrationDate { get; set; } = DateTime.Now;
+        public DateTime LastModified { get; set; } = DateTime.UtcNow;
+
+
 
         // Navigation properties
         public ICollection<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
