@@ -16,14 +16,14 @@ namespace StudentManagement.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class StudentsController(IGenericService<Student> studentService, IMapper mapper
-    // , GetTopThreeStudentsHandler getTopThreeStudentsHandler
+    , GetTopThreeStudentsHandler getTopThreeStudentsHandler
     )
      : ControllerBase
     {
         private readonly IGenericService<Student> _studentService = studentService;
         private readonly IMapper _mapper = mapper;
 
-        // private readonly GetTopThreeStudentsHandler _getTopThreeStudentsHandler = getTopThreeStudentsHandler;
+        private readonly GetTopThreeStudentsHandler _getTopThreeStudentsHandler = getTopThreeStudentsHandler;
 
         // GET: api/Students
         // Returns all students (optionally,  can create a StudentDto to control what data is exposed)
@@ -45,18 +45,18 @@ namespace StudentManagement.Controllers
         }
 
 
-        // [HttpGet("TopThree")]
-        // public async Task<IActionResult> GetTopThreeStudent()
-        // {
-        //     var query = new GetTopThreeStudentsQuery();
-        //     var res = await _getTopThreeStudentsHandler.HandleAsync(query);
-        //     if (res.IsSuccess)
-        //     {
-        //         return Ok(res.Data);
-        //     }
-        //     return BadRequest(new { Error = res.ErrorMessage });
+        [HttpGet("TopThree")]
+        public async Task<IActionResult> GetTopThreeStudent()
+        {
+            var query = new GetTopThreeStudentsQuery();
+            var res = await _getTopThreeStudentsHandler.HandleAsync(query);
+            if (res.IsSuccess)
+            {
+                return Ok(res.Data);
+            }
+            return BadRequest(new { Error = res.ErrorMessage });
 
-        // }
+        }
 
         // GET: api/Students/{id}
         // Returns a single student by its ID.

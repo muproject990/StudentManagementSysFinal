@@ -25,7 +25,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
 
-// builder.Services.AddScoped<GetTopThreeStudentsHandler>();
+builder.Services.AddScoped<GetTopThreeStudentsHandler>();
 
 // Register Mapper
 builder.Services.AddAutoMapper(typeof(Program));
@@ -107,6 +107,12 @@ using (var scope = app.Services.CreateScope())
     // Migrate both DbContexts
     db1.Database.Migrate();
     db2.Database.Migrate();
+    DataSeeder1.Seed(db1);
+    DataSeeder2.Seed(db2);
+
+
+
+
 }
 
 
