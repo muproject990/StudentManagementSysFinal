@@ -33,3 +33,4 @@
 /home/avs/FinalProjAsp.net/StudentManagement.Infra/obj/Debug/net9.0/StudentManagement.Infra.pdb
 /home/avs/FinalProjAsp.net/StudentManagement.Infra/obj/Debug/net9.0/StudentManagement.Infra.genruntimeconfig.cache
 /home/avs/FinalProjAsp.net/StudentManagement.Infra/obj/Debug/net9.0/ref/StudentManagement.Infra.dll
+/home/avs/FinalProjAsp.net/StudentManagement.Infra/obj/Debug/net9.0/StudentManagement.Infra.sourcelink.json

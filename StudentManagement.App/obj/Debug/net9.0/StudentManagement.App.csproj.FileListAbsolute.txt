@@ -33,3 +33,4 @@
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/refint/StudentManagement.App.dll
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.pdb
 /home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/ref/StudentManagement.App.dll
+/home/avs/FinalProjAsp.net/StudentManagement.App/obj/Debug/net9.0/StudentManagement.App.sourcelink.json

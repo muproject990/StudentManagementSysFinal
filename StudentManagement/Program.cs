@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using StudentManagement.Infra;//   extension method AddInfrastructure
-
-using StudentManagement.App.Handlers; // if you use specific handlers
 using StudentManagementSystem.Infrastructure.Persistence;
 using StudentManagement.Domain.Interface;
 using StudentManagement.Infra.Repository;
 using StudentManagement.App.services;
 using Microsoft.EntityFrameworkCore;
 using StudentManagement.App.Automapper;
+using StudentManagementSystem.Application.Handlers;
+using StudentManagement.Infra.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +22,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 // Register generic repository and service for all entities.
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
-builder.Services.AddScoped<EnrollStudentHandler>();
+builder.Services.AddScoped<GetTopThreeStudentsHandler>();
 
 // Register Mapper
 builder.Services.AddAutoMapper(typeof(Program));

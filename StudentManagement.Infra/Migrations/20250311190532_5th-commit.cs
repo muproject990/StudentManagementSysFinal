@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace StudentManagement.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class _3rdcommit : Migration
+    public partial class _5thcommit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

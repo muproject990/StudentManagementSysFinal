@@ -21,3 +21,4 @@
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/refint/StudentManagement.Domain.dll
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.pdb
 /home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/ref/StudentManagement.Domain.dll
+/home/avs/FinalProjAsp.net/StudentManagement.Domain/obj/Debug/net9.0/StudentManagement.Domain.sourcelink.json

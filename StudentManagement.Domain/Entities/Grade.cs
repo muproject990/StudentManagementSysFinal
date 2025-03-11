@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace StudentManagement.Domain.Entities
 {
     public class Grade
@@ -8,6 +10,7 @@ namespace StudentManagement.Domain.Entities
         public char GradeLetter { get; set; }  // Allowed values: A, B, C, D, F
 
         // Navigation properties
+        [JsonIgnore]
         public Student Student { get; set; }
         public Course Course { get; set; }
     }

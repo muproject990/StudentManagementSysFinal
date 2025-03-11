@@ -17,6 +17,7 @@ namespace StudentManagementSystem.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             // Configure Student entity
             modelBuilder.Entity<Student>(entity =>
             {
@@ -27,7 +28,6 @@ namespace StudentManagementSystem.Infrastructure.Persistence
             modelBuilder.Entity<Course>(entity =>
             {
                 entity.HasIndex(c => c.CourseCode).IsUnique();
-                entity.HasAnnotation("CK_Course_CreditHours", "[CreditHours] BETWEEN 1 AND 5");
                 entity.HasAnnotation("Sqlite:CheckConstraint",
                    "CK_Course_CreditHours CHECK (CreditHours IN(1,2,3,4,5))");
             });
@@ -50,8 +50,10 @@ namespace StudentManagementSystem.Infrastructure.Persistence
             // Configure Grade entity and its relationships, using HasAnnotation for SQLite check constraint:
             modelBuilder.Entity<Grade>(entity =>
             {
-                entity.HasAnnotation("Sqlite:CheckConstraint",
-                    "CK_Grades_GradeLetter CHECK (GradeLetter IN('A','B','C','D','F'))");
+                // entity.HasAnnotation("Sqlite:CheckConstraint",
+                //     "CK_Grades_GradeLetter CHECK (GradeLetter IN('A','B','C','D','F'))");
+
+                entity.HasAnnotation("Sqlite:CheckConstraint", "CK_Grades_GradeLetter CHECK (GradeLetter IN('A', 'B', 'C', 'D', 'F'))");
 
                 entity.HasOne(g => g.Student)
                       .WithMany(s => s.Grades)
@@ -61,6 +63,7 @@ namespace StudentManagementSystem.Infrastructure.Persistence
                       .WithMany(c => c.Grades)
                       .HasForeignKey(g => g.CourseID);
             });
+
 
             base.OnModelCreating(modelBuilder);
         }

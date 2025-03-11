@@ -327,3 +327,4 @@
 /home/avs/FinalProjAsp.net/StudentManagement/obj/Debug/net9.0/StudentManagement.pdb
 /home/avs/FinalProjAsp.net/StudentManagement/obj/Debug/net9.0/StudentManagement.genruntimeconfig.cache
 /home/avs/FinalProjAsp.net/StudentManagement/obj/Debug/net9.0/ref/StudentManagement.dll
+/home/avs/FinalProjAsp.net/StudentManagement/obj/Debug/net9.0/StudentManagement.sourcelink.json

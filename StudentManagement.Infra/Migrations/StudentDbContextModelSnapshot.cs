@@ -41,9 +41,7 @@ namespace StudentManagement.Infra.Migrations
 
                     b.ToTable("Courses");
 
-                    b
-                        .HasAnnotation("CK_Course_CreditHours", "[CreditHours] BETWEEN 1 AND 5")
-                        .HasAnnotation("Sqlite:CheckConstraint", "CK_Course_CreditHours CHECK (CreditHours IN(1,2,3,4,5))");
+                    b.HasAnnotation("Sqlite:CheckConstraint", "CK_Course_CreditHours CHECK (CreditHours IN(1,2,3,4,5))");
                 });
 
             modelBuilder.Entity("StudentManagement.Domain.Entities.Enrollment", b =>
@@ -94,7 +92,7 @@ namespace StudentManagement.Infra.Migrations
 
                     b.ToTable("Grades");
 
-                    b.HasAnnotation("Sqlite:CheckConstraint", "CK_Grades_GradeLetter CHECK (GradeLetter IN('A','B','C','D','F'))");
+                    b.HasAnnotation("Sqlite:CheckConstraint", "CK_Grades_GradeLetter CHECK (GradeLetter IN('A', 'B', 'C', 'D', 'F'))");
                 });
 
             modelBuilder.Entity("StudentManagement.Domain.Entities.Student", b =>

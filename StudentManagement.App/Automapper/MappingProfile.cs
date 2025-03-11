@@ -9,6 +9,9 @@ namespace StudentManagement.App.Automapper
         public MappingProfile()
         {
             CreateMap<CreateStudentDto, Student>();
+            CreateMap<CreateGradeDto, Grade>();
+            CreateMap<CreateCourseDto, Course>();
+            CreateMap<CreateEnrollmentDto, Enrollment>();
         }
     }
 }
